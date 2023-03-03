@@ -1,6 +1,6 @@
-mkdir raw
-mkdir fastq
-cd raw
+mkdir ./data/raw
+mkdir ./data/fastq
+cd ./data/raw
 echo 'Downloading SRX2896360'
 wget https://www.ncbi.nlm.nih.gov/sra/SRX2896360
 echo 'Downloading SRX2896363'
