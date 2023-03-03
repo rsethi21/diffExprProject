@@ -13,6 +13,7 @@ outpath = args.output
 rawFiles = list(os.listdir(inpath))
 
 for rawFile in rawFiles:
+    print(rawFile)
     os.system(f'fastq-dump -I --split-files {inpath}/{rawFile}')
 
-os.system('mv *.fastq inpath')
+os.system(f'mv *.fastq {outpath}')
