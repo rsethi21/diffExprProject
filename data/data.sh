@@ -1,5 +1,6 @@
 mkdir ./data/raw
 mkdir ./data/fastq
+mkdir ./data/index
 cd ./data/raw
 echo 'Downloading SRR5660030'
 wget https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR5660030/SRR5660030

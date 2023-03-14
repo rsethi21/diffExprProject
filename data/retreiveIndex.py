@@ -4,22 +4,26 @@ import argparse
 from Bio.SeqRecord import SeqRecord
 from Bio.Seq import Seq
 
-parser = argparse.ArgumentParser(description='Retreive fasta of CDSs from index')
-parser.add_argument('-e', '--email', help='input email address to access sequences with', required=True)
-parser.add_argument('-i', '--input', help='input accession', required=True)
-parser.add_argument('-o', '--output', help='specify output file path', required=True)
+def retreiveRaw(email, accession, output):
+    Entrez.email = email
+    handle = Entrez.efetch(db='nucleotide', id=accession, rettype='gb')
+    record = SeqIO.read(handle, "gb")
 
-args = parser.parse_args()
+    cds = []
+    for feature in record.features:
+        if feature.type == 'CDS':
+            s = SeqRecord(Seq(feature.extract(record.seq)), id=feature.qualifiers['protein_id'][0], description=feature.qualifiers['protein_id'][0])
+            cds.append(s)
 
-Entrez.email = args.email
-handle = Entrez.efetch(db='nucleotide', id=args.input, rettype='gb')
-record = SeqIO.read(handle, "gb")
+    with open(args.output, 'w') as file:
+        SeqIO.write(cds, file, 'fasta')
 
-cds = []
-for feature in record.features:
-    if feature.type == 'CDS':
-        s = SeqRecord(Seq(feature.extract(record.seq)), id=feature.qualifiers['protein_id'][0], description=feature.qualifiers['protein_id'][0])
-        cds.append(s)
 
-with open(args.output, 'w') as file:
-    SeqIO.write(cds, file, 'fasta')
+parser = argparse.ArgumentParser(description='grab raw CDS for index')
+parser.add_argument('-e', '--email', required=True)
+parser.add_argument('-a', '--accession', required=True)
+parser.add_argument('-o', '--output', required=True)
+
+if __name__ == '__main__':
+    args = parser.parse_args()
+    retreiveRaw(args.email, args.accession, args.output)
