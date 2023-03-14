@@ -7,13 +7,16 @@ parser.add_argument('-o', '--output', required=True)
 
 args = parser.parse_args()
 
-inpath = args.input
-outpath = args.output
+def decompress(i, o):
+    inpath = args.input
+    outpath = args.output
 
-rawFiles = list(os.listdir(inpath))
+    rawFiles = list(os.listdir(inpath))
 
-for rawFile in rawFiles:
-    print(rawFile)
-    os.system(f'fastq-dump -I --split-files {inpath}/{rawFile}')
+    for rawFile in rawFiles:
+        print(rawFile)
+        os.system(f'fastq-dump -I --split-files {inpath}/{rawFile}')
+    os.system(f'mv *.fastq {outpath}')
 
-os.system(f'mv *.fastq {outpath}')
+if __name__ == '__main__':
+    decompress(args.input, args.output)
