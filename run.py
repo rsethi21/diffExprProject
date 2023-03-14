@@ -1,6 +1,5 @@
 import os
 import argparse
-import pdb
 
 parser = argparse.ArgumentParser(description='differential expression pipeline')
 parser.add_argument('-s', '--input', help='input file with NCBI links', required=False, default='./data/links/testInput.txt')
