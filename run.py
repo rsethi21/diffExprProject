@@ -10,6 +10,6 @@ parser.add_argument('-e', '--email', help='input email for NCBI access', require
 args = parser.parse_args()
 
 # os.system('chmod +x ./data/data.sh')
-# os.system('./data/data.sh')
+# os.system(f'./data/data.sh {args.input}')
 # os.system('python3 ./data/decompressFastQ.py -i ./data/raw -o ./data/fastq')
 os.system(f'python3 ./data/retreiveIndex.py -e {args.email} -a {args.index} -o ./data/index/raw.fasta')
