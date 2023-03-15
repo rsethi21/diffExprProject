@@ -1,8 +1,9 @@
-# mkdir ./data/raw
-# mkdir ./data/fastq
-# mkdir ./data/index
-# touch PipelineProject.log
-# cd ./data/raw
+mkdir ./results
+mkdir ./data/raw
+mkdir ./data/fastq
+mkdir ./data/index
+touch PipelineProject.log
+cd ./data/raw
 
 FILE=$1
 
@@ -11,4 +12,4 @@ while read line; do
 	wget $line
 done < $FILE
 
-# cd ../..
+cd ../..
