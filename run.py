@@ -2,10 +2,10 @@ import os
 import argparse
 
 parser = argparse.ArgumentParser(description='differential expression pipeline')
-parser.add_argument('-s', '--input', help='input file with NCBI links', required=False, default='test/links/fileLinks.txt')
+parser.add_argument('-s', '--input', help='input file with NCBI links', required=False, default='testData/links/fileLinks.txt')
 parser.add_argument('-i', '--index', help='input accession id for index', required=False, default='NC_006273.2')
 parser.add_argument('-e', '--email', help='input email for NCBI access', required=True)
-parser.add_argument('-m', '--metatable', help='metatable tab deliminated', required=False, default='./test/metatable.tsv')
+parser.add_argument('-m', '--metatable', help='metatable tab deliminated', required=False, default='./testData/metatable.tsv')
 parser.add_argument('-l', '--logfile', help='name/path of log file', required=False, default='./PipelineProject_Rohan_Sethi/PipelineProject.log')
 parser.add_argument('-n', '--name', help='name of reference to blast against', required=False, default='Betaherpesvirinae')
 
