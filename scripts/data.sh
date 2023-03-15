@@ -1,20 +1,22 @@
-mkdir ./data
-mkdir ./results
-mkdir ./data/raw
-mkdir ./data/fastq
-mkdir ./data/index
+mkdir ./PipelineProject_Rohan_Sethi
+mkdir ./PipelineProject_Rohan_Sethi/data
+mkdir ./PipelineProject_Rohan_Sethi/results
+mkdir ./PipelineProject_Rohan_Sethi/data/raw
+mkdir ./PipelineProject_Rohan_Sethi/data/fastq
+mkdir ./PipelineProject_Rohan_Sethi/data/index
+mkdir ./PipelineProject_Rohan_Sethidata/blast
 
 LOG=$1
 touch $LOG
 
-cd ./data/raw
+cd ./PipelineProject_Rohan_Sethi/data/raw
 
 FILE=$2
-append='../../'
+append='../../../'
 FILE=$append$FILE
 while read line; do
 	echo 'Downloading' $line'...'
 	wget $line
 done < $FILE
 
-cd ../..
+cd ../../..
