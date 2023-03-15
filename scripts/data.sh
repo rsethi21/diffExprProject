@@ -4,7 +4,7 @@ mkdir ./PipelineProject_Rohan_Sethi/results
 mkdir ./PipelineProject_Rohan_Sethi/data/raw
 mkdir ./PipelineProject_Rohan_Sethi/data/fastq
 mkdir ./PipelineProject_Rohan_Sethi/data/index
-mkdir ./PipelineProject_Rohan_Sethidata/blast
+mkdir ./PipelineProject_Rohan_Sethidata/data/blast
 
 LOG=$1
 touch $LOG
