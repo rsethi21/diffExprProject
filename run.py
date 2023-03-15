@@ -22,7 +22,7 @@ if __name__ == '__main__':
 
     os.system('python3 ./scripts/decompressFastQ.py -i ./PipelineProject_Rohan_Sethi/data/raw -o ./PipelineProject_Rohan_Sethi/data/fastq')
 
-    os.system(f'python3 ./scripts/retreiveIndex.py -e {args.email} -a {args.index} -o ./PipelineProject_Rohan_Sethi/data/index/raw.fasta -l {args.logfile}')
+    os.system(f'python3 ./scripts/retreiveIndex.py -e {args.email} -a {args.index} -o ./PipelineProject_Rohan_Sethi/data/index/raw.fasta -p ./PipelineProject_Rohan_Sethi/data/index/protein.fasta -l {args.logfile}')
 
     os.system(f'time kallisto index -i ./PipelineProject_Rohan_Sethi/data/index/index.idx ./PipelineProject_Rohan_Sethi/data/index/raw.fasta')
 
@@ -38,8 +38,8 @@ if __name__ == '__main__':
     os.system(f'Rscript ./scripts/diffExpAnalysis.R {args.metatable} {args.logfile} ./PipelineProject_Rohan_Sethi/results/sigDiffExp.tsv')
 
     # step 5
-    os.system(f'python3 ./scripts/sigExpSpecies.py -i ./PipelineProject_Rohan_Sethi/data/index/raw.fasta -s ./PipelineProject_Rohan_Sethi/results/sigDiffExp.tsv -o ./PipelineProject_Rohan_Sethi/results/mostDifferentiallyExpressed.fasta')
+    os.system(f'python3 ./scripts/sigExpSpecies.py -i ./PipelineProject_Rohan_Sethi/data/index/protein.fasta -s ./PipelineProject_Rohan_Sethi/results/sigDiffExp.tsv -o ./PipelineProject_Rohan_Sethi/results/mostDifferentiallyExpressed.fasta')
+    
     os.system('rm ./PipelineProject_Rohan_Sethi/results/sigDiffExp.tsv')
-    '''
-    os.system(f'python3 ./scripts/blastReference.py -n {args.name} -e {args.email} -o ./PipelineProject_Rohan_Sethi/data/blast/betaherpesvirinae.fasta')
-    '''
+
+    # os.system(f'python3 ./scripts/blastReference.py -n {args.name} -e {args.email} -o ./PipelineProject_Rohan_Sethi/data/blast/betaherpesvirinae.fasta')

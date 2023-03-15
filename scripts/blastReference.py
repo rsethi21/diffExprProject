@@ -10,11 +10,19 @@ parser.add_argument('-o', '--output', help='path to save sequences for local dat
 
 def extract(name, email, output):
     Entrez.email = email
-    handle = Entrez.efetch(db='nucleotide', id=name, retmode='fasta')
-    records = Entrez.read(handle)
-    print(len(records))
+    handle = Entrez.esearch(db='nucleotide', term=f'{name}[ORGN]', idtype="acc")
+    record = Entrez.read(handle)
+    records = list(record['IdList'])
+    
+    sequences = []
+
+    for ident in records:
+        handle2 = Entrez.efetch(db='nucleotide', id=ident, rettype='fasta')
+        records2 = Entrez.read(handle2)
+        sequences.extend(records2)
+
     with open(output, 'w') as file:
-        SeqIO.write(records, file, 'fasta')
+        SeqIO.write(sequences, file, 'fasta')
 
 if __name__ == '__main__':
     args = parser.parse_args()
