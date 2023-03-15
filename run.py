@@ -14,6 +14,8 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
     
+    '''
+
     os.system('chmod +x ./scripts/data.sh')
 
     os.system(f'./scripts/data.sh {args.logfile} {args.input}')
@@ -24,12 +26,14 @@ if __name__ == '__main__':
 
     os.system(f'time kallisto index -i ./PipelineProject_Rohan_Sethi/data/index/index.idx ./PipelineProject_Rohan_Sethi/data/index/raw.fasta')
 
-    for fn in os.listdir('./data/raw'):
+    for fn in os.listdir('./PipelineProject_Rohan_Sethi/data/raw'):
         f1 = f'./PipelineProject_Rohan_Sethi/data/fastq/{fn}_1.fastq'
         f2 = f'./PipelineProject_Rohan_Sethi/data/fastq/{fn}_2.fastq'
         os.system(f'time kallisto quant -i ./PipelineProject_Rohan_Sethi/data/index/index.idx -o ./PipelineProject_Rohan_Sethi/results/{fn} -b 30 -t 4 {f1} {f2}')
 
     os.system(f'python3 ./scripts/quantify.py -m {args.metatable} -r ./PipelineProject_Rohan_Sethi/results -l {args.logfile}')
+    
+    '''
 
     os.system(f'Rscript ./scripts/diffExpAnalysis.R {args.metatable} {args.logfile} ./PipelineProject_Rohan_Sethi/results/sigDiffExp.tsv')
 
