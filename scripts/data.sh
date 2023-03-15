@@ -10,6 +10,7 @@ touch $LOG
 cd ./data/raw
 
 FILE=$2
+FILE+="../../"
 while read line; do
 	echo 'Downloading' $line'...'
 	wget $line
