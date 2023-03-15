@@ -11,8 +11,8 @@ def output(metaFile, resultsFolder):
     meta = pd.read_table(metaFile)
     outputDict = {}
     for sampleID in os.listdir(resultsFolder):
-        sample = int(meta[meta['name'] == sampleID][ 'sample'])
-        condition = int(meta[meta['name'] == sampleID]['condition'])
+        sample = sampleID
+        condition = int(meta[meta['sample'] == sampleID]['condition'])
         sampleAbundance = pd.read_table(f'{resultsFolder}/{sampleID}/abundance.tsv')
         tpms = sampleAbundance['tpm']
         outputDict[sampleID] = {'sample': sample, 'condition': condition, 'min_tpm': round(tpms.min(), 1), 'med_tpm': round(tpms.median(), 1), 'mean_tpm': round(tpms.mean(), 1), 'max_tpm': round(tpms.max(), 1)}
