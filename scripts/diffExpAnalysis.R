@@ -4,6 +4,7 @@ library(dplyr)
 args <- commandArgs(trailingOnly = TRUE)
 input <- args[[1]]
 output <- args[[2]]
+intermediate <- args[[3]]
 
 stab <- read.table(input, header=TRUE, stringsAsFactors=FALSE)
 so <- sleuth_prep(stab)
@@ -17,3 +18,4 @@ sleuth_significant <- dplyr::filter(sleuth_table, qval <= 0.05) |> dplyr::arrang
 sleuth_significant <- dplyr::select(sleuth_significant, target_id, test_stat, pval, qval)
 
 write.table(sleuth_significant, file=output, quote=FALSE, row.names=FALSE, append=TRUE, sep='\t')
+write.table(sleuth_significant, file=intermediate, quote=FALSE, row.names=FALSE, append=TRUE, sep='\t')

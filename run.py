@@ -30,4 +30,9 @@ if __name__ == '__main__':
 
     os.system(f'python3 ./scripts/quantify.py -m {args.metatable} -r ./results -l {args.logfile}')
 
-    os.system(f'Rscript ./scripts/diffExpAnalysis.R {args.metatable} {args.logfile}')
+    os.system(f'Rscript ./scripts/diffExpAnalysis.R {args.metatable} {args.logfile} ./results/sigDiffExp.tsv')
+    
+    # step 5
+    
+
+    os.system('rm ./results/sigDiffExp.tsv')
