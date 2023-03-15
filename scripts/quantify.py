@@ -23,3 +23,5 @@ if __name__ == '__main__':
     with open(args.logfile, 'a') as file:
         file.write('\n')
     df.to_csv(args.logfile, sep='\t', header=True, index=False, mode='a', encoding='ascii')
+    with open(args.logfile, 'a') as file:
+        file.write('\n')

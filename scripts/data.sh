@@ -3,11 +3,13 @@ mkdir ./results
 mkdir ./data/raw
 mkdir ./data/fastq
 mkdir ./data/index
-touch ./PipelineProject.log
+
+LOG=$1
+touch $LOG
+
 cd ./data/raw
 
-FILE=$1
-
+FILE=$2
 while read line; do
 	echo 'Downloading' $line'...'
 	wget $line
