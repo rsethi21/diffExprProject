@@ -12,7 +12,8 @@ parser.add_argument('-l', '--logfile', help='name/path of log file', required=Fa
 if __name__ == '__main__':
 
     args = parser.parse_args()
-
+    
+    '''
     os.system('chmod +x ./scripts/data.sh')
 
     os.system(f'./scripts/data.sh {args.logfile} {args.input}')
@@ -30,9 +31,11 @@ if __name__ == '__main__':
 
     os.system(f'python3 ./scripts/quantify.py -m {args.metatable} -r ./results -l {args.logfile}')
 
-    os.system(f'Rscript ./scripts/diffExpAnalysis.R {args.metatable} {args.logfile} ./results/sigDiffExp.tsv')
-    
-    # step 5
-    
+    '''
 
+    os.system(f'Rscript ./scripts/diffExpAnalysis.R {args.metatable} {args.logfile} ./results/sigDiffExp.tsv')
+
+    # step 5
+    os.system(f'python3 ./scripts/sigExpSpecies.py -i ./data/index/raw.fasta -s ./results/sigDiffExp.tsv -o ./results/mostDifferentiallyExpressed.fasta')
     os.system('rm ./results/sigDiffExp.tsv')
+
