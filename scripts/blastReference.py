@@ -10,9 +10,17 @@ parser.add_argument('-o', '--output', help='path to save sequences for local dat
 
 def extract(name, email, output):
     Entrez.email = email
-    handle = Entrez.esearch(db='nucleotide', term=f'{name}[ORGN] AND refseq[filter]', idtype="acc", retmax=10000)
+    handle = Entrez.esearch(db='nucleotide', term=f'{name}[ORGN]', idtype="acc", retmax=10000)
     record = Entrez.read(handle)
     records = list(record['IdList'])
+
+    try:
+        handleExtra = Entrez.esearch(db='nucleotide', term=f'{name}[ORGN]', idtype="acc", retstart=10001, retmax=10000)
+        recordExtra = Entrez.read(handleExtra)
+        records.extend(list(recordExtra['IdList']))
+        print(len(records))
+    except:
+        pass
 
     for ident in records:
         handle2 = Entrez.efetch(db='nucleotide', id=ident, rettype='fasta')
