@@ -8,6 +8,7 @@ parser.add_argument('-e', '--email', help='input email for NCBI access', require
 parser.add_argument('-m', '--metatable', help='metatable tab deliminated', required=False, default='./testData/metatable.tsv')
 parser.add_argument('-l', '--logfile', help='name/path of log file', required=False, default='./PipelineProject_Rohan_Sethi/PipelineProject.log')
 parser.add_argument('-n', '--name', help='name of reference to blast against', required=False, default='Betaherpesvirinae')
+parser.add_argument('-u', '--numSelect', help='number of blast results to store', required=False, default=10)
 
 
 if __name__ == '__main__':
@@ -44,8 +45,10 @@ if __name__ == '__main__':
 
     os.system(f'python3 ./scripts/blastReference.py -n {args.name} -e {args.email} -o ./PipelineProject_Rohan_Sethi/data/blast/{args.name}.fasta')
 
-    '''
-
     os.system('chmod +x ./scripts/blast.sh')
 
     os.system(f'./scripts/blast.sh {args.name} ./PipelineProject_Rohan_Sethi/data/blast/{args.name}.fasta ./PipelineProject_Rohan_Sethi/data/blast/mostDifferentiallyExpressed.fasta ./PipelineProject_Rohan_Sethi/data/blast/{args.name} ./PipelineProject_Rohan_Sethi/results/blastResults.csv')
+
+    '''
+
+    os.system(f'python3 ./scripts/selectN.py -i ./PipelineProject_Rohan_Sethi/results/blastResults.csv -n {args.numSelect} -l {args.logfile}')
