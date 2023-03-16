@@ -20,10 +20,10 @@ def extractSequences(fq1, fq2):
 
 def takeSample(seqs1, seqs2, amount, out1, out2):
     with open(out1, 'w') as o1:
-        SeqIO.write(seqs1[:int(amount)], 'fastq')
+        SeqIO.write(seqs1[:int(amount)], o1, 'fastq')
 
     with open(out2, 'w') as o2:
-        SeqIO.write(seqs2[:int(amount)], 'fastq')
+        SeqIO.write(seqs2[:int(amount)], o2, 'fastq')
 
 
 if __name__ == '__main__':
