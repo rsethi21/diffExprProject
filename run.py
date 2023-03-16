@@ -6,7 +6,7 @@ parser = argparse.ArgumentParser(description='differential expression pipeline')
 parser.add_argument('-s', '--input', help='input file with NCBI links', required=False, default='testData/links/fileLinks.txt')
 parser.add_argument('-i', '--index', help='input accession id for index', required=False, default='NC_006273.2')
 parser.add_argument('-e', '--email', help='input email for NCBI access', required=True)
-parser.add_argument('-m', '--metatable', help='metatable tab deliminated', required=False, default='./testData/metatable.tsv')
+parser.add_argument('-m', '--metatable', help='metatable tab deliminated', required=True)
 parser.add_argument('-l', '--logfile', help='name/path of log file', required=False, default='./PipelineProject_Rohan_Sethi/PipelineProject.log')
 parser.add_argument('-n', '--name', help='name of reference to blast against', required=False, default='Betaherpesvirinae')
 parser.add_argument('-u', '--numSelect', help='number of blast results to store', required=False, default=10)
@@ -72,9 +72,9 @@ if __name__ == '__main__':
             f2 = f'./PipelineProject_Rohan_Sethi/data/fastq/{fn}_2.fastq'
             os.system(f'time kallisto quant -i ./PipelineProject_Rohan_Sethi/data/index/index.idx -o ./PipelineProject_Rohan_Sethi/results/{fn} -b 30 -t 4 {f1} {f2}')
 
-        os.system(f'python3 ./scripts/quantify.py -m {args.metatable} -r ./PipelineProject_Rohan_Sethi/results -l {args.logfile}')
+        os.system(f'python3 ./scripts/quantify.py -m ./PipelineProject_Rohan_Sethi/data/metatable.tsv -r ./PipelineProject_Rohan_Sethi/results -l {args.logfile}')
 
-        os.system(f'Rscript ./scripts/diffExpAnalysis.R {args.metatable} {args.logfile} ./PipelineProject_Rohan_Sethi/results/sigDiffExp.tsv')
+        os.system(f'Rscript ./scripts/diffExpAnalysis.R ./PipelineProject_Rohan_Sethi/data/metatable.tsv {args.logfile} ./PipelineProject_Rohan_Sethi/results/sigDiffExp.tsv')
         os.system('chmod +x ./scripts/testBlast.sh')
 
         os.system(f'./scripts/testBlast.sh ./PipelineProject_Rohan_Sethi/data/blast/mostDifferentiallyExpressed.fasta ./PipelineProject_Rohan_Sethi/data/blast/{args.name} ./PipelineProject_Rohan_Sethi/results/blastResults.csv')

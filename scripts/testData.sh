@@ -14,8 +14,10 @@ FOLDER=$2
 append='../../'
 fqFOLDER=$append$FOLDER'/fastq'
 blastdb=$append$FOLDER'/blastdb'
+meta=$append$FOLDER'/metatable.tsv'
 
 cp -r fqFOLDER ./fastq
 cp blastdb/* ./blast
+cp meta .
 
 cd ../..
