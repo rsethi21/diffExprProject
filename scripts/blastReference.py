@@ -15,7 +15,7 @@ def extract(name, email, output):
     records = list(record['IdList'])
 
     try:
-        handleExtra = Entrez.esearch(db='nucleotide', term=f'{name}[ORGN]', idtype="acc", retstart=10001, retmax=10000)
+        handleExtra = Entrez.esearch(db='nucleotide', term=f'{name}[ORGN]', idtype="acc", retstart=10000, retmax=10000)
         recordExtra = Entrez.read(handleExtra)
         records.extend(list(recordExtra['IdList']))
         print(len(records))
