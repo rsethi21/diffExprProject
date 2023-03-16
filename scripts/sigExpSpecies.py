@@ -13,12 +13,12 @@ def openFasta(inputFasta):
         sequences = list(SeqIO.parse(file, 'fasta'))
     return sequences
 
-def extractSigProteins(sequences, significantFile, output):
+def extractSigProteins(sequence, significantFile, output):
     df = pd.read_table(significantFile, sep='\t')
     significantIDs = list(df['target_id'])
-    significantSeqRecords = [s for s in sequences if s.id in significantIDs]
+    significantSeqRecord = [s for s in sequence if s.id == significantIDs[0]][0]
     with open(output, 'w') as file:
-        SeqIO.write(significantSeqRecords, file, 'fasta')
+        SeqIO.write(significantSeqRecord, file, 'fasta')
 
 if __name__ == '__main__':
     args = parser.parse_args()
