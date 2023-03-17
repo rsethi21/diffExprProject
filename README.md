@@ -14,10 +14,10 @@
     - git clone [HTTPS]
 2. Once cloned, move into the main project folder such that your current working directory is the diffExprProject folder
 3. Install python requirements
-  a. create a virtual environment, conda environment, or install locally; below is an example of using virtual environments
+  - create a virtual environment, conda environment, or install locally; below is an example of using virtual environments
     - python3 -m venv venv -> this create a virtual environment
     - source venv/bin/activate -> this activates it, should see a (venv)
-  b. install requirements from requirements.txt
+  - install requirements from requirements.txt
     - pip3 install -r requirements.txt
 
 ## Test Run
