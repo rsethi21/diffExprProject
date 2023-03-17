@@ -63,7 +63,7 @@ if __name__ == '__main__': # this will run everything below only if run from the
         os.system(f'python3 ./scripts/selectN.py -i ./PipelineProject_Rohan_Sethi/results/blastResults.csv -n {args.numSelect} -l {args.logfile}') # here I select the top 10 matches from the blast search of Betavirinae strains found for the protein in the blast serach
 
 
-    else: # this will run if using the testData for the test run
+    else: # this will run if using the testData for the test run; it uses the same scripts with some exceptions so the comments are the same as above and mentioned as such
         os.system('chmod +x ./scripts/testData.sh') # I wrote a separate shell file that doesn't require downloading fastq files since samples will be provided; this script will create the necessary folders for the testrun and extract the data needed from the testData folder provided
 
         os.system(f'./scripts/testData.sh {args.logfile} {args.testData}') # this will run the script explained above which is made executable above
@@ -82,7 +82,7 @@ if __name__ == '__main__': # this will run everything below only if run from the
             f2 = f'./PipelineProject_Rohan_Sethi/data/fastq/{fn}_2.fastq'
             os.system(f'time kallisto quant -i ./PipelineProject_Rohan_Sethi/data/index/index.idx -o ./PipelineProject_Rohan_Sethi/results/{fn} -b 30 -t 4 {f1} {f2}')
 
-    # the two scripts below serve the same function they did above
+    # the three scripts below serve the same function they did above
 
         os.system(f'python3 ./scripts/quantify.py -m ./PipelineProject_Rohan_Sethi/data/metatable.tsv -r ./PipelineProject_Rohan_Sethi/results -l {args.logfile}')
 
