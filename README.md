@@ -44,10 +44,11 @@
     - -m = testData/metatable.tsv
     - -l = ./PipelineProject_Rohan_Sethi/PipelineProject.log
     - -n = Betaherpesvirinae
+    - -b = None
     - -u = 10
     - -t = None
 
-- usage: *python3 run.py [-h] [-s INPUT] [-i INDEX] -e EMAIL [-m METATABLE] [-l LOGFILE] [-n NAME] [-u NUMSELECT] [-t TESTDATA]*
+- usage: *python3 run.py [-h] [-s INPUT] [-i INDEX] -e EMAIL [-m METATABLE] [-l LOGFILE] [-n NAME] [-b BLASTDB] [-u NUMSELECT] [-t TESTDATA]*
 
 - options:
   - -h, --help            show this help message and exit
@@ -63,6 +64,8 @@
                         name/path of log file to store important output information tab delimited
   - -n NAME, --name NAME  
                         name of species to blast against to see what other species the most differentially expressed genes are expressed in
+  - -b BLASTDB, --blastdb BLASTDB
+                        if already have blast genome fasta file, then input path to it here; this is if you want to skip the downloaded step if already have a blast fasta; must match the name parameter if using; if not inputed then ignores and downloads what is passed to name parameter
   - -u NUMSELECT, --numSelect NUMSELECT
                         number of blast results to store from the blast search
   - -t TESTDATA, --testData TESTDATA
