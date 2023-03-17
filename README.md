@@ -33,32 +33,32 @@
 
 ## More Complicated Run
 - all flags in brackets are optional and default to the follwoing:
-    -s = testData/links/fileLinks.txt
-    -i = NC_006273.2
-    -e = no default, need to specify one
-    -m = testData/metatable.tsv
-    -l = ./PipelineProject_Rohan_Sethi/PipelineProject.log
-    -n = Betaherpesvirinae
-    -u = 10
-    -t = None
+    - -s = testData/links/fileLinks.txt
+    - -i = NC_006273.2
+    - -e = no default, need to specify one
+    - -m = testData/metatable.tsv
+    - -l = ./PipelineProject_Rohan_Sethi/PipelineProject.log
+    - -n = Betaherpesvirinae
+    - -u = 10
+    - -t = None
 
 - usage: run.py [-h] [-s INPUT] [-i INDEX] -e EMAIL [-m METATABLE] [-l LOGFILE] [-n NAME] [-u NUMSELECT] [-t TESTDATA]
 
 - options:
-  -h, --help            show this help message and exit
-  -s INPUT, --input INPUT
+  - -h, --help            show this help message and exit
+  - -s INPUT, --input INPUT
                         input file with NCBI links for the SRA sample data to download from
-  -i INDEX, --index INDEX
+  - -i INDEX, --index INDEX
                         input accession id for index to assemble the reads
-  -e EMAIL, --email EMAIL
+  - -e EMAIL, --email EMAIL
                         input email for NCBI access via biopython
-  -m METATABLE, --metatable METATABLE
+  - -m METATABLE, --metatable METATABLE
                         metatable tab deliminated containing information about the samples; an example in testData
-  -l LOGFILE, --logfile LOGFILE
+  - -l LOGFILE, --logfile LOGFILE
                         name/path of log file to store important output information tab delimited
-  -n NAME, --name NAME  
+  - -n NAME, --name NAME  
                         name of species to blast against to see what other species the most differentially expressed genes are expressed in
-  -u NUMSELECT, --numSelect NUMSELECT
+  - -u NUMSELECT, --numSelect NUMSELECT
                         number of blast results to store from the blast search
-  -t TESTDATA, --testData TESTDATA
+  - -t TESTDATA, --testData TESTDATA
                         input test data folder name; only if wanting to run test run, else ignore
