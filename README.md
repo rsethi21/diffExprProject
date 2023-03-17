@@ -24,7 +24,7 @@
 ## Test Run
 ### RUN
 1. To run
-    - python3 run.py -e [EMAIL] -t ./testFolder
+    - python3 run.py -e [EMAIL] -t /testFolder
 2. For more information on flags and arguments
     - python3 run.py --help
 - make sure email is one that can be used to access NCBI sequences; ensure this is run from the main project directory
