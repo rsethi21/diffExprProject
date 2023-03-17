@@ -49,7 +49,7 @@ if __name__ == '__main__': # this will run everything below only if run from the
 
         os.system(f'Rscript ./scripts/diffExpAnalysis.R {args.metatable} {args.logfile} ./PipelineProject_Rohan_Sethi/results/sigDiffExp.tsv') # here I run an R script I wrote to find the most significantly differentially expressed TPMS between samples; the ids are stored in a file that will be accessed by other scripts
 
-        os.system(f'python3 ./scripts/sigExpSpecies.py -i ./PipelineProject_Rohan_Sethi/data/index/protein.fasta -s ./PipelineProject_Rohan_Sethi/results/sigDiffExp.tsv -o ./PipelineProject_Rohan_Sethi/results/blast/mostDifferentiallyExpressed.fasta') # here I find the single most signficant differentially expressed gene from the step above and I store its protein sequence by extracting it from the protein fasta I made of the reference using the protein id
+        os.system(f'python3 ./scripts/sigExpSpecies.py -i ./PipelineProject_Rohan_Sethi/data/index/protein.fasta -s ./PipelineProject_Rohan_Sethi/results/sigDiffExp.tsv -o ./PipelineProject_Rohan_Sethi/data/blast/mostDifferentiallyExpressed.fasta') # here I find the single most signficant differentially expressed gene from the step above and I store its protein sequence by extracting it from the protein fasta I made of the reference using the protein id
 
         os.system('rm ./PipelineProject_Rohan_Sethi/results/sigDiffExp.tsv') # here I remove an intermediate file that is not necessary anymore
 
