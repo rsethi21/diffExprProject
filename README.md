@@ -24,11 +24,12 @@
 ### RUN
 1. To run
     - python3 run.py -e [EMAIL] -t ./testFolder
+2. For more information on flags and arguments
+    - python3 run.py --help
 - make sure email is one that can be used to access NCBI sequences; ensure this is run from the main project directory
 - The test folder contains sample fastq files, a Betaherpesvirinae genome database folder to blast the most significantly expressed genes across, and a metatable that stores information about sample data. 
 - The links folder is are the SRA links from where the data comes from.
-- For more information on the flags and arguments:
-  - python3 run.py --help
+- 
 ### Output
 - The outputs will be saved in PipelineProject_Rohan_Sethi directory in which results are saved in results and data for input into various functions is saved in data
 - The log file contains information from the test run
