@@ -39,7 +39,7 @@
 
 ## More Complicated Run
 - one could run the run.py file or run each script separately to meet whatever needs necessary; use the --help flag to get more information for each script is looking to run separately
-- all flags in brackets are optional and default to the follwoing:
+- all flags in brackets are optional and default to the following (may want to change if not running test data):
     - -s = testData/links/fileLinks.txt
     - -i = NC_006273.2
     - -e = no default, need to specify one
