@@ -12,21 +12,22 @@
 
 ## Set-up
 1. First clone this repository locally with the following command line arguments:
-    - git clone [HTTPS]
+    - *git clone [HTTPS]*
 2. Once cloned, move into the main project folder such that your current working directory is the diffExprProject folder
-3. Install python requirements
-    - create a virtual environment, conda environment, or install locally; below is an example of using virtual environments
-        - python3 -m venv venv -> this create a virtual environment
-        - source venv/bin/activate -> this activates it, should see a (venv)
+    - *cd diffExprProject*
+4. Install python requirements
+    - create a virtual environment, conda environment, or install locally; below is an example of using python virtual environments
+        - *python3 -m venv venv* -> this create a virtual environment
+        - *source venv/bin/activate* -> this activates it, should see a (venv)
     - install requirements from requirements.txt
-        - pip3 install -r requirements.txt
+        - *pip3 install -r requirements.txt*
 
 ## Test Run
 ### RUN
 1. To run
-    - python3 run.py -e [EMAIL] -t testData # make sure that the testData folder is inputed as shown and not with any slashs nor relative paths (i.e. . or ..)
+    - *python3 run.py -e [EMAIL] -t testData* # make sure that the testData folder is inputed as shown and not with any slashs nor relative paths (i.e. . or ..)
 2. For more information on flags and arguments
-    - python3 run.py --help
+    - *python3 run.py --help*
 - make sure email is one that can be used to access NCBI sequences; ensure this is run from the main project directory
 - The test folder contains sample fastq files, a Betaherpesvirinae genome database folder to blast the most significantly expressed genes across, and a metatable that stores information about sample data. 
 - The links folder is are the SRA links from where the data comes from.
@@ -46,7 +47,7 @@
     - -u = 10
     - -t = None
 
-- usage: run.py [-h] [-s INPUT] [-i INDEX] -e EMAIL [-m METATABLE] [-l LOGFILE] [-n NAME] [-u NUMSELECT] [-t TESTDATA]
+- usage: *python3 run.py [-h] [-s INPUT] [-i INDEX] -e EMAIL [-m METATABLE] [-l LOGFILE] [-n NAME] [-u NUMSELECT] [-t TESTDATA]*
 
 - options:
   - -h, --help            show this help message and exit
