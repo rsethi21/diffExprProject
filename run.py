@@ -47,20 +47,19 @@ if __name__ == '__main__': # this will run everything below only if run from the
 
         os.system(f'python3 ./scripts/quantify.py -m {args.metatable} -r ./PipelineProject_Rohan_Sethi/results -l {args.logfile}') # here I save the summary of the TPMS per sample and store it in the logfile
 
-        os.system(f'Rscript ./scripts/diffExpAnalysis.R {args.metatable} {args.logfile} ./PipelineProject_Rohan_Sethi/results/sigDiffExp.tsv') # here I run an R script I wrote to find the most significantly expressed TPMS
+        os.system(f'Rscript ./scripts/diffExpAnalysis.R {args.metatable} {args.logfile} ./PipelineProject_Rohan_Sethi/results/sigDiffExp.tsv') # here I run an R script I wrote to find the most significantly differentially expressed TPMS between samples; the ids are stored in a file that will be accessed by other scripts
 
-        # step 5
-        os.system(f'python3 ./scripts/sigExpSpecies.py -i ./PipelineProject_Rohan_Sethi/data/index/protein.fasta -s ./PipelineProject_Rohan_Sethi/results/sigDiffExp.tsv -o ./PipelineProject_Rohan_Sethi/results/blast/mostDifferentiallyExpressed.fasta') # here I find the most signficant differentially expressed gene from the step above and I store its protein sequence by extracting it  from the protein fasta I made of the reference using the protein id
+        os.system(f'python3 ./scripts/sigExpSpecies.py -i ./PipelineProject_Rohan_Sethi/data/index/protein.fasta -s ./PipelineProject_Rohan_Sethi/results/sigDiffExp.tsv -o ./PipelineProject_Rohan_Sethi/results/blast/mostDifferentiallyExpressed.fasta') # here I find the single most signficant differentially expressed gene from the step above and I store its protein sequence by extracting it from the protein fasta I made of the reference using the protein id
 
         os.system('rm ./PipelineProject_Rohan_Sethi/results/sigDiffExp.tsv') # here I remove an intermediate file that is not necessary anymore
 
-        os.system(f'python3 ./scripts/blastReference.py -n {args.name} -e {args.email} -o ./PipelineProject_Rohan_Sethi/data/blast/{args.name}.fasta') # here I extract the genome files of the Betaherpesvirinae from NCBI
+        os.system(f'python3 ./scripts/blastReference.py -n {args.name} -e {args.email} -o ./PipelineProject_Rohan_Sethi/data/blast/{args.name}.fasta') # here I extract the genome files of the Betaherpesvirinae from NCBI; this can be changed to a different one but by default uses Betaherpesvirinae
 
         os.system('chmod +x ./scripts/blast.sh') # here I make this shell script executable
 
         os.system(f'./scripts/blast.sh {args.name} ./PipelineProject_Rohan_Sethi/data/blast/{args.name}.fasta ./PipelineProject_Rohan_Sethi/data/blast/mostDifferentiallyExpressed.fasta ./PipelineProject_Rohan_Sethi/data/blast/{args.name} ./PipelineProject_Rohan_Sethi/results/blastResults.csv') # here I run the blast tblastn, blasting the most significant protein against the Betavirinae genome sequences
 
-        os.system(f'python3 ./scripts/selectN.py -i ./PipelineProject_Rohan_Sethi/results/blastResults.csv -n {args.numSelect} -l {args.logfile}') # here I select the top 10 matches from the blast search of Betavirinae strains found for the protein in the blast serach
+        os.system(f'python3 ./scripts/selectN.py -i ./PipelineProject_Rohan_Sethi/results/blastResults.csv -n {args.numSelect} -l {args.logfile}') # here I select the top 10 matches from the blast search of Betavirinae strains found for the protein in the blast serach; only the top 10 most significant mathces (HPSs) are selected from as the tblastn command in the blast.sh and testBlast.sh file deal with this using the flag max_hps=1
 
 
     else: # this will run if using the testData for the test run; it uses the same scripts with some exceptions so the comments are the same as above and mentioned as such
@@ -90,7 +89,7 @@ if __name__ == '__main__': # this will run everything below only if run from the
        
         os.system(f'python3 ./scripts/sigExpSpecies.py -i ./PipelineProject_Rohan_Sethi/data/index/protein.fasta -s ./PipelineProject_Rohan_Sethi/results/sigDiffExp.tsv -o ./PipelineProject_Rohan_Sethi/data/blast/mostDifferentiallyExpressed.fasta') # here I find the most signficant differentially expressed gene from the step above and I store its protein sequence by extracting it  from the protein fasta I made of the reference using the protein id
 
-    # the scripts below run the blast search using the predownloaded blast db of Betaherpesvirinae in the testData folder
+    # the scripts below run the blast search using the predownloaded blast db of Betaherpesvirinae in the testData folder, which is why I use a slightly different script for the blasting of test data
 
         os.system('chmod +x ./scripts/testBlast.sh')
 
