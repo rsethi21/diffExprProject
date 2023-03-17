@@ -12,12 +12,15 @@ cd ./PipelineProject_Rohan_Sethi/data/
 
 FOLDER=$2
 append='../../'
-fqFOLDER=$append$FOLDER'/fastq'
-blastdb=$append$FOLDER'/blastdb'
+fqFOLDER=$append$FOLDER'/fastq/*'
+echo $fqFOLDER
+blastdb=$append$FOLDER'/blastdb/*'
+echo $blastdb
 meta=$append$FOLDER'/metatable.tsv'
+echo $meta
 
-cp -r fqFOLDER ./fastq
-cp blastdb/* ./blast
-cp meta .
+cp -r $fqFOLDER ./fastq
+cp $blastdb ./blast
+cp $meta .
 
 cd ../..
