@@ -6,8 +6,9 @@
 - The project requires the following requirements preinstalled:
 1. **kallisto** - command line application to quantify transcripts per million (TPMs) from a set of reads mapped to a reference genome for assembly
 2. **ncbi-blast+** - command line application to run a blast search of a query against a genome database locally downloaded
-3. R packages - **sleuth**, **dplyr** for statistical analysis of TPMs to find the most differentially expressed transcripts between the samples
-4. Python packages - the following set-up section
+3. **fastq-dump** - command line application to split SRA objects into reverse and forward reads
+4. R packages - **sleuth**, **dplyr** for statistical analysis of TPMs to find the most differentially expressed transcripts between the samples
+5. Python packages - the following set-up section
 
 ## Set-up
 1. First clone this repository locally with the following command line arguments:
