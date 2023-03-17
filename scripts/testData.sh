@@ -15,7 +15,7 @@ touch $LOG
 cd ./PipelineProject_Rohan_Sethi/data/
 
 FOLDER=$2 # input of folder name where test data is stored
-append='../../'
+append='../..'
 
 # creating paths for each of the essential test data stored for test run 
 fqFOLDER=$append$FOLDER'/fastq/*'
