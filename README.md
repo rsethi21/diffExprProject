@@ -34,6 +34,7 @@
 ### Output
 - The outputs will be saved in PipelineProject_Rohan_Sethi directory in which results are saved in results and data for input into various functions is saved in data
 - The log file contains information from the test run
+- The log file already in this repo is the one from the full run and not from the test sample data
 
 ## More Complicated Run
 - one could run the run.py file or run each script separately to meet whatever needs necessary; use the --help flag to get more information for each script is looking to run separately
