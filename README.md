@@ -22,8 +22,8 @@
 
 ## Test Run
 ### RUN
+1. python3 run.py -e [EMAIL] -t ./testFolder
 - make sure email is one that can be used to access NCBI sequences; ensure this is run from the main project directory
-  - python3 run.py -e [EMAIL] -t ./testFolder
 - The test folder contains sample fastq files, a Betaherpesvirinae genome database folder to blast the most significantly expressed genes across, and a metatable that stores information about sample data. 
 - The links folder is are the SRA links from where the data comes from.
 - For more information on the flags and arguments:
