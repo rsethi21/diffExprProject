@@ -35,6 +35,7 @@
 - The log file contains information from the test run
 
 ## More Complicated Run
+- one could run the run.py file or run each script separately to meet whatever needs necessary; use the --help flag to get more information for each script is looking to run separately
 - all flags in brackets are optional and default to the follwoing:
     - -s = testData/links/fileLinks.txt
     - -i = NC_006273.2
