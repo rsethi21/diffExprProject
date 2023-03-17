@@ -5,8 +5,9 @@
 - This project presents a pipeline that enables a user to determine the most differentially expressed genes between different samples of sequencing reads and search a genetic database for other species of a specified family that express those genes. This is a highly dynamic tool that enables a user to customize the pipeline to their needs.
 - The project requires the following requirements preinstalled:
 1. **kallisto** - command line application to quantify transcripts per million (TPMs) from a set of reads mapped to a reference genome for assembly
-2. R packages - **sleuth**, **dplyr** for statistical analysis of TPMs to find the most differentially expressed transcripts between the samples
-3. Python packages - the following set-up section
+2. **ncbi-blast+** - command line application to run a blast search of a query against a genome database locally downloaded
+3. R packages - **sleuth**, **dplyr** for statistical analysis of TPMs to find the most differentially expressed transcripts between the samples
+4. Python packages - the following set-up section
 
 ## Set-up
 1. First clone this repository locally with the following command line arguments:
