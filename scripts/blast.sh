@@ -6,4 +6,4 @@ OUTresults=$5
 
 makeblastdb -in $REF -out $OUTdb -title $NAME -dbtype nucl
 
-tblastn -query $QUERY -db $OUTdb -out $OUTresults -outfmt "6 sacc pident length qstart qend sstart send bitscore evalue stitle"
+tblastn -query $QUERY -db $OUTdb -max_hsps 1 -out $OUTresults -outfmt "6 sacc pident length qstart qend sstart send bitscore evalue stitle"
