@@ -32,21 +32,19 @@
 - The log file contains information from the test run
 
 ## More Complicated Run
-all flags in brackets are optional and default to the follwoing:
--s = testData/links/fileLinks.txt
--i = NC_006273.2
--e = no default, need to specify one
--m = testData/metatable.tsv
--l = ./PipelineProject_Rohan_Sethi/PipelineProject.log
--n = Betaherpesvirinae
--u = 10
--t = None
+- all flags in brackets are optional and default to the follwoing:
+    -s = testData/links/fileLinks.txt
+    -i = NC_006273.2
+    -e = no default, need to specify one
+    -m = testData/metatable.tsv
+    -l = ./PipelineProject_Rohan_Sethi/PipelineProject.log
+    -n = Betaherpesvirinae
+    -u = 10
+    -t = None
 
-usage: run.py [-h] [-s INPUT] [-i INDEX] -e EMAIL [-m METATABLE] [-l LOGFILE] [-n NAME] [-u NUMSELECT] [-t TESTDATA]
+- usage: run.py [-h] [-s INPUT] [-i INDEX] -e EMAIL [-m METATABLE] [-l LOGFILE] [-n NAME] [-u NUMSELECT] [-t TESTDATA]
 
-differential expression pipeline
-
-options:
+- options:
   -h, --help            show this help message and exit
   -s INPUT, --input INPUT
                         input file with NCBI links for the SRA sample data to download from
