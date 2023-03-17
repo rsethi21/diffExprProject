@@ -8,6 +8,7 @@ import pandas as pd
 This script essentially orchestrates all the other scripts required to perform the differential gene expression analysis. It is required to be run from the home directory of this project.
 '''
 
+# the paths below written into the code are not hardcoded but rather the ones that reflect the data folders created by the first bash script that runs (just as a reference in case it looks misleading)
 
 # command line arguments defined
 parser = argparse.ArgumentParser(description='differential expression pipeline') # defining the argument parser
@@ -17,6 +18,7 @@ parser.add_argument('-e', '--email', help='input email for NCBI access', require
 parser.add_argument('-m', '--metatable', help='metatable tab deliminated', required=False, default='./testData/metatable.tsv') # this is the metadata table that is not required but can be substituted for the default one
 parser.add_argument('-l', '--logfile', help='name/path of log file', required=False, default='./PipelineProject_Rohan_Sethi/PipelineProject.log') # this is the name/path of where the log file will be created defaults into the folder
 parser.add_argument('-n', '--name', help='name of reference to blast against', required=False, default='Betaherpesvirinae') # this is the name of the species that the sequences will be blasted against; defaults to the one on the problem but can be substituted
+parser.add_argument('-b', '--blastdb', help='if already have blast genome fasta file, then input path to it here', required=False, default=None)
 parser.add_argument('-u', '--numSelect', help='number of blast results to store', required=False, default=10) # this is the argument to determine the number of significant blast results to store in the final csv file; defaults to 10 like in the problem
 parser.add_argument('-t', '--testData', help='input test data folder name', required=False, default=None) # this is the folder of the testdata to run the test; need to input this
 
@@ -53,8 +55,11 @@ if __name__ == '__main__': # this will run everything below only if run from the
 
         os.system('rm ./PipelineProject_Rohan_Sethi/results/sigDiffExp.tsv') # here I remove an intermediate file that is not necessary anymore
 
-        os.system(f'python3 ./scripts/blastReference.py -n {args.name} -e {args.email} -o ./PipelineProject_Rohan_Sethi/data/blast/{args.name}.fasta') # here I extract the genome files of the Betaherpesvirinae from NCBI; this can be changed to a different one but by default uses Betaherpesvirinae
-
+        if args.blastdb == None: # this step takes a long time depending on how many sequences there are from the search so can also optionally input the path to a previously downloaded fasta to disable this step; if doing so make sure that the -n flag is appropriately updated
+            os.system(f'python3 ./scripts/blastReference.py -n {args.name} -e {args.email} -o ./PipelineProject_Rohan_Sethi/data/blast/{args.name}.fasta') # here I extract the genome files of the Betaherpesvirinae from NCBI; this can be changed to a different one but by default uses Betaherpesvirinae
+        else:
+            os.system(f'cp {args.blastdb} ./PipelineProject_Rohan_Sethi/data/blast') # this will copy the fasta file to the blast directory which will later be invoked for database compilation    
+        
         os.system('chmod +x ./scripts/blast.sh') # here I make this shell script executable
 
         os.system(f'./scripts/blast.sh {args.name} ./PipelineProject_Rohan_Sethi/data/blast/{args.name}.fasta ./PipelineProject_Rohan_Sethi/data/blast/mostDifferentiallyExpressed.fasta ./PipelineProject_Rohan_Sethi/data/blast/{args.name} ./PipelineProject_Rohan_Sethi/results/blastResults.csv') # here I run the blast tblastn, blasting the most significant protein against the Betavirinae genome sequences
