@@ -1,7 +1,7 @@
 # diffExprProject
 
 ## Description
-- This is a project for Loyola University Chicago's computational biology class (COMP 383).
+- This is a project for Loyola University Chicago's computational biology class (COMP 383). I chose track 1 which is differential expression.
 - This project presents a pipeline that enables a user to determine the most differentially expressed genes between different samples of sequencing reads and search a genetic database for other species of a specified family that express those genes. This is a highly dynamic tool that enables a user to customize the pipeline to their needs.
 - The project requires the following requirements preinstalled:
 1. **kallisto** - command line application to quantify transcripts per million (TPMs) from a set of reads mapped to a reference genome for assembly
